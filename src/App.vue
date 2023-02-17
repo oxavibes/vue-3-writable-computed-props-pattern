@@ -1,30 +1,41 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import { reactive } from "vue";
+
+import BaseForm from "./components/BaseForm.vue";
+
+const form = reactive({
+  email: "",
+  password: "",
+  check: false,
+});
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="container">
+    <section class="section">
+      <div class="columns">
+        <div class="column">
+          <h1 class="title">Login</h1>
+          <BaseForm v-model:email="form.email" v-model:password="form.password" v-model:check="form.check" />
+        </div>
+
+        <div class="column">
+          <article class="message is-small">
+            <div class="message-header">
+              <p>Form props</p>
+            </div>
+            <div class="message-body">
+              <pre class="has-text-left content">
+                {{ form }}
+              </pre>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+<style>
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
 </style>
