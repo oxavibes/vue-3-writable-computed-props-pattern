@@ -3,7 +3,7 @@ import { reactive } from "vue";
 
 import BaseForm from "./components/BaseForm.vue";
 
-const form = reactive({
+const formFields = reactive({
   email: "",
   password: "",
   check: false,
@@ -16,7 +16,7 @@ const form = reactive({
       <div class="columns">
         <div class="column">
           <h1 class="title">Login</h1>
-          <BaseForm v-model:email="form.email" v-model:password="form.password" v-model:check="form.check" />
+          <BaseForm v-model:formFields="formFields" />
         </div>
 
         <div class="column">
@@ -26,7 +26,7 @@ const form = reactive({
             </div>
             <div class="message-body">
               <pre class="has-text-left content">
-                {{ form }}
+                {{ formFields }}
               </pre>
             </div>
           </article>
